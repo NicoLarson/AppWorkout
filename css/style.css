@@ -1,0 +1,31 @@
+header h1{
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+    background-color: #222;
+}
+main{
+    max-width: 80rem;
+}
+main dl{
+    padding: 2rem;
+}
+main dl dt{
+    text-align: center;
+}
+main dl dd h3{
+    text-align: center;
+    padding: 1rem;
+}
+main dl dd ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+dl dd ul li{
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 10rem;
+    cursor: pointer;
+}

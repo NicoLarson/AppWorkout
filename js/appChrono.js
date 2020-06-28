@@ -4,17 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let startBtn = document.getElementById("start")
     let pauseBtn = document.getElementById("pause")
     let stopBtn = document.getElementById("stop")
-
+    
     let start
     let sec = 0
     let min = 0
     let hour = 0
     let tic = 0
 
+    if (sec < 10) {
+        console.log("0" + sec)
+    }
+    //TODO Afficher les deux zeros 00:00:00
     let chrono = () => {
         tic++
         sec = tic
-        chronoDisplay.innerHTML = `${hour} : ${min} : ${sec}`
+
+/*         if (sec < 10 && min < 10 && hour < 10) {
+            chronoDisplay.innerHTML = `0${hour} : 0${min} : 0${sec}`
+        }else if(sec > 9 && min < 10 && hour < 10){
+            chronoDisplay.innerHTML = `0${hour} : 0${min} : ${sec}`
+        }else if(sec > 9 && min > 9 && hour < 10){
+            chronoDisplay.innerHTML = `0${hour} : ${min} : ${sec}`
+         } else {
+            chronoDisplay.innerHTML = `${hour} : ${min} : ${sec}`
+        }
+ */
         if (tic > 59) {
             min++
             tic = 0
@@ -28,12 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
     //Todo faire possibilité de cliquer une seul fois
-    startBtn.addEventListener('click', (event) => {
-        start = setInterval(chrono, 1000)
-        if (event.detail > 1){
-            clearInterval(start)
-        }
+    startBtn.addEventListener('click', () => {
+        start = setInterval(chrono, 10)
     })
     //Stoper le chronometre
     stopBtn.addEventListener('click', () => {
