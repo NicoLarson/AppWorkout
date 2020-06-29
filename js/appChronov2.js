@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let pauseBtn = document.querySelector("#pause")
     let stopBtn = document.querySelector("#stop")
 
-    let hour = 0, min = 0, sec = 0, tic = 0
+    let hour = 0, min = 0, sec = 0, tic = 0, start
     let chrono = () => {
         tic++
         if (tic > 59) {
@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         hour = 0
         min = 0
         sec = 0
+        hourChrono.innerHTML = `0${hour}`
+        minChrono.innerHTML = `0${min}`
+        secChrono.innerHTML = `0${sec}`
     })
     //Mettre en pause le chronomètre
     pauseBtn.addEventListener('click', () => {
