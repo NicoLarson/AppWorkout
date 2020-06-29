@@ -1,37 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const chronoDisplay = document.getElementById("chrono")
-    let startBtn = document.getElementById("start")
-    let pauseBtn = document.getElementById("pause")
-    let stopBtn = document.getElementById("stop")
-    
-    let start
-    let sec = 0
-    let min = 0
-    let hour = 0
-    let tic = 0
+    let hourChrono = document.querySelector("dl dd h3 span:first-child")
+    let minChrono = document.querySelector("dl dd h3 span:nth-child(2)")
+    let secChrono = document.querySelector("dl dd h3 span:last-child")
 
-    if (sec < 10) {
-        console.log("0" + sec)
-    }
-    //TODO Afficher les deux zeros 00:00:00
+    let startBtn = document.querySelector("#start")
+    let pauseBtn = document.querySelector("#pause")
+    let stopBtn = document.querySelector("#stop")
+
+    let hour = 0, min = 0, sec = 0, tic = 0, start
     let chrono = () => {
         tic++
-        sec = tic
-
-/*         if (sec < 10 && min < 10 && hour < 10) {
-            chronoDisplay.innerHTML = `0${hour} : 0${min} : 0${sec}`
-        }else if(sec > 9 && min < 10 && hour < 10){
-            chronoDisplay.innerHTML = `0${hour} : 0${min} : ${sec}`
-        }else if(sec > 9 && min > 9 && hour < 10){
-            chronoDisplay.innerHTML = `0${hour} : ${min} : ${sec}`
-         } else {
-            chronoDisplay.innerHTML = `${hour} : ${min} : ${sec}`
-        }
- */
         if (tic > 59) {
             min++
             tic = 0
+            sec = 0
             if (min > 59) {
                 hour++
                 min = 0
@@ -39,25 +22,41 @@ document.addEventListener('DOMContentLoaded', () => {
                     hour = 0
                 }
             }
+        } else {
+            sec = tic
         }
+
+        hour < 10 ? hourChrono.innerHTML = `0${hour}` : hourChrono.innerHTML = `${hour}`
+        min < 10 ? minChrono.innerHTML = `0${min}` : minChrono.innerHTML = `${min}`
+        sec < 10 ? secChrono.innerHTML = `0${sec}` : secChrono.innerHTML = `${sec}`
+
     }
+    pauseBtn.style.display = 'none'
 
-
-    //Todo faire possibilité de cliquer une seul fois
     startBtn.addEventListener('click', () => {
-        start = setInterval(chrono, 10)
+        start = setInterval(chrono, 1000)
+        startBtn.style.display = 'none'
+        pauseBtn.style.display = 'block'
+
     })
-    //Stoper le chronometre
+
     stopBtn.addEventListener('click', () => {
         clearInterval(start)
         tic = 0
-        sec = 0
         hour = 0
+        min = 0
         sec = 0
-        chronoDisplay.innerHTML = `00:00:00`
+        hourChrono.innerHTML = `0${hour}`
+        minChrono.innerHTML = `0${min}`
+        secChrono.innerHTML = `0${sec}`
+        startBtn.style.display = 'block'
+        pauseBtn.style.display = 'none'
     })
-    //Mettre en pause le chronomètre
+
     pauseBtn.addEventListener('click', () => {
         clearInterval(start)
+        startBtn.style.display = 'block'
+        pauseBtn.style.display = 'none'
     })
+
 })
