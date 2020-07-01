@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startBtn.addEventListener('click', () => {
         timerSet()
-        start = setInterval(timer, 10)
+        showTimer()
+        start = setInterval(timer, 1000)
         timerDisplay.style.display = 'block'
         startBtn.style.display = 'none'
         pauseBtn.style.display = 'block'
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pauseBtn.style.display = 'none'
     })
     continueBtn.addEventListener('click', () => {
-        start = setInterval(timer, 10)
+        start = setInterval(timer, 1000)
         continueBtn.style.display = 'none'
         pauseBtn.style.display = 'block'
     })
