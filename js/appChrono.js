@@ -8,12 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let pauseBtn = document.querySelector("#pause")
     let stopBtn = document.querySelector("#stop")
 
-    let hour = 0, min = 0, sec = 0, tic = 0, start
+    let hour, min, sec, start
+
+    let chronoDisplay = () => {
+        hour < 10 ? hourChrono.innerHTML = `0${hour}` : hourChrono.innerHTML = `${hour}`
+        min < 10 ? minChrono.innerHTML = `0${min}` : minChrono.innerHTML = `${min}`
+        sec < 10 ? secChrono.innerHTML = `0${sec}` : secChrono.innerHTML = `${sec}`
+    }
+    let chronoReset = () => {
+        hour = 0
+        min = 0
+        sec = 0
+        hourChrono.innerHTML = `0${hour}`
+        minChrono.innerHTML = `0${min}`
+        secChrono.innerHTML = `0${sec}`
+    }
+    chronoReset()
     let chrono = () => {
-        tic++
-        if (tic > 59) {
+        sec++
+        if (sec > 59) {
             min++
-            tic = 0
             sec = 0
             if (min > 59) {
                 hour++
@@ -22,17 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     hour = 0
                 }
             }
-        } else {
-            sec = tic
         }
-
-        hour < 10 ? hourChrono.innerHTML = `0${hour}` : hourChrono.innerHTML = `${hour}`
-        min < 10 ? minChrono.innerHTML = `0${min}` : minChrono.innerHTML = `${min}`
-        sec < 10 ? secChrono.innerHTML = `0${sec}` : secChrono.innerHTML = `${sec}`
-
+        chronoDisplay()
     }
-    pauseBtn.style.display = 'none'
 
+
+    pauseBtn.style.display = 'none'
     startBtn.addEventListener('click', () => {
         start = setInterval(chrono, 1000)
         startBtn.style.display = 'none'
@@ -42,13 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stopBtn.addEventListener('click', () => {
         clearInterval(start)
-        tic = 0
-        hour = 0
-        min = 0
-        sec = 0
-        hourChrono.innerHTML = `0${hour}`
-        minChrono.innerHTML = `0${min}`
-        secChrono.innerHTML = `0${sec}`
+        chronoReset()
         startBtn.style.display = 'block'
         pauseBtn.style.display = 'none'
     })

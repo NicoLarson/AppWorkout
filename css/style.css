@@ -28,3 +28,27 @@ dl dd ul li {
   border-radius: 10rem;
   cursor: pointer;
 }
+#timer ul{
+    display: flex;
+    justify-content: center;
+}
+#timer ul li{
+    border: red;
+    height: 100%;
+    width: 4rem;
+}
+#timer h3{
+  display: none;
+}
+#pauseTimer, #continueTimer{
+    display: none;
+}
+
+input{
+    border: red solid 0.1rem;
+    outline: none;
+    height: 100%;
+    max-width: 6rem;
+    text-align: center;
+    font-size: 2rem;
+}
