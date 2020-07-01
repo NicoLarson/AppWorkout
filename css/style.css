@@ -21,34 +21,36 @@ main dl dd ul {
   display: flex;
   justify-content: center;
 }
-dl dd ul li {
+#chrono ul li,
+#timer ul:last-child li {
   max-width: 100%;
   font-size: 2.6rem;
   margin: 0 2rem;
   border-radius: 10rem;
   cursor: pointer;
 }
-#timer ul{
-    display: flex;
-    justify-content: center;
+#timer ul {
+  padding: 0 1rem;
 }
-#timer ul li{
-    border: red;
-    height: 100%;
-    width: 4rem;
+#timer ul li {
+  display: inline;
+  border: red;
+  max-width: 4rem;
+  margin: 0 1rem;
 }
-#timer h3{
+#timer h3 {
   display: none;
 }
-#pauseTimer, #continueTimer{
-    display: none;
+#pauseTimer,
+#continueTimer {
+  display: none;
 }
 
-input{
-    border: red solid 0.1rem;
-    outline: none;
-    height: 100%;
-    max-width: 6rem;
-    text-align: center;
-    font-size: 2rem;
+input {
+  display: inline;
+  border: red solid 0.1rem;
+  outline: none;
+  max-width: 4rem;
+  font-size: 1.6rem;
+  text-align: center;
 }
