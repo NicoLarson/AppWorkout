@@ -1,8 +1,15 @@
+:root{
+  --color-background: #222;
+  --color-background-sec:#333;
+  --color-font:#fafafa;
+  --color-font-sec:#fafafa;
+}
+
 header h1 {
   text-align: center;
   padding: 2rem;
-  color: #fff;
-  background-color: #222;
+  color: var(--color-font);
+  background-color: var(--color-background);
 }
 main {
   max-width: 80rem;
@@ -48,9 +55,19 @@ main dl dd ul {
 
 input {
   display: inline;
-  border: red solid 0.1rem;
+  border: none;
   outline: none;
   max-width: 4rem;
   font-size: 1.6rem;
   text-align: center;
+}
+
+footer {
+
+background-color: var(--color-background);
+color: var(--color-font);
+}
+footer p{
+  padding: 1rem;
+  font-size: 1rem;
 }
